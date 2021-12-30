@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+                <th>날짜</th>
+                <th>파장</th>
+                <th>출력파워</th>
+                <th>조사시간</th>
+                <th>대조군</th>
+                <th>실험군</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.name}"></td>
+                <td th:text="${member.date}"></td>
+                <td th:text="${member.wavelength}"></td>
+                <td th:text="${member.printPower}"></td>
+                <td th:text="${member.researchTime}"></td>
+                <td th:text="${member.control}"></td>
+                <td th:text="${member.experiment}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>

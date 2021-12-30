@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <form action="/members/new" method="post">
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을입력하세요">
+            </br>
+            <label for="name">날짜</label>
+            <input type="text" id="date" name="date" placeholder="날짜을입력하세요">
+            </br>
+            <label for="name">파장</label>
+            <input type="text" id="wavelength" name="wavelength" placeholder="파장을입력하세요">
+            </br>
+            <label for="name">출력파워</label>
+            <input type="text" id="printPower" name="printPower" placeholder="출력파워을입력하세요">
+            </br>
+            <label for="name">조사시간</label>
+            <input type="text" id="researchTime" name="researchTime" placeholder="조사시간을입력하세요">
+            </br>
+            <label for="name">대조군</label>
+            <input type="text" id="control" name="control" placeholder="대조군을입력하세요">
+            </br>
+            <label for="name">실험군</label>
+            <input type="text" id="experiment" name="experiment" placeholder="실험군을입력하세요">
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

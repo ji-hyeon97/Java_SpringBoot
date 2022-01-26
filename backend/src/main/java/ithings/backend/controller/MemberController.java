@@ -34,7 +34,6 @@ public class MemberController {
         member.setControl(form.getControl());
         member.setExperiment(form.getExperiment());
         memberService.join(member);
-
         return "redirect:/";
     }
 

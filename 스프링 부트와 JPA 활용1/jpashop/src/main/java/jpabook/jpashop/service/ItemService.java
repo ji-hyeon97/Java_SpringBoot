@@ -5,18 +5,26 @@ import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ItemService {
-
     private final ItemRepository itemRepository;
 
+
     @Transactional
-    public void  saveItem(Item item){
+    public void save(Item item){
         itemRepository.save(item);
+    }
+
+    @Transactional
+    public void updateItem(Long id, String name, int price){
+        Item item = itemRepository.findOne(id);
+        item.setName(name);
+        item.setPrice(price);
     }
 
     public List<Item> findItems(){
@@ -24,14 +32,6 @@ public class ItemService {
     }
 
     public Item findOne(Long itemId){
-       return itemRepository.findOne(itemId);
-    }
-
-    @Transactional
-    public void updateItem(Long id, String name, int price){
-
-        Item item = itemRepository.findOne(id);
-        item.setName(name);
-        item.setPrice(price);
+        return itemRepository.findOne(itemId);
     }
 }

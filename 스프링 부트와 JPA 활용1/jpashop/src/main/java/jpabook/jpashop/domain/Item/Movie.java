@@ -7,9 +7,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("M")
 @Getter @Setter
-public class Movie extends Item {
+@DiscriminatorValue("M")
+public class Movie extends Album{
     private String director;
     private String actor;
 }

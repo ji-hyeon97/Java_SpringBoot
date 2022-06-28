@@ -9,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -18,45 +16,33 @@ import static org.junit.Assert.*;
 @Transactional
 public class MemberServiceTest {
 
-    @Autowired MemberService memberService;
-    @Autowired MemberRepository memberRepository;
-    @Autowired EntityManager em;
+    @Autowired
+    MemberService memberService;
+
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     public void 회원가입() throws Exception{
-
-        //given
         Member member = new Member();
-        member.setName("kim");
+        member.setName("Kim");
 
-        //when
         Long saveId = memberService.join(member);
 
-        //then
-        em.flush();
         assertEquals(member, memberRepository.findOne(saveId));
     }
 
-    //@Test(expected = IllegalStateException.class)
-    @Test
-    public void 중복_회원_조회() throws Exception{
-
-        //given
+    @Test(expected = IllegalStateException.class)
+    public void 중복_회원_예외() throws Exception{
         Member member1 = new Member();
-        member1.setName("kim1");
+        member1.setName("Kim");
 
         Member member2 = new Member();
-        member2.setName("kim1");
+        member2.setName("Kim");
 
-        //when
         memberService.join(member1);
-        try {
-            memberService.join(member2);
-        } catch (IllegalStateException e){
-            return;
-        }
+        memberService.join(member2);
 
-        //then
-        fail("에외가 발생해야 한다");
+        fail("예외가 발생하여야 한다.");
     }
 }

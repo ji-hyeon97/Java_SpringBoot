@@ -8,12 +8,11 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 public class Delivery {
-
     @Id @GeneratedValue
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "delivery",fetch = FetchType.EAGER)
     private Order order;
 
     @Embedded
@@ -21,4 +20,5 @@ public class Delivery {
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
+
 }
